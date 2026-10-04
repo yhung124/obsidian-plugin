@@ -1,0 +1,80 @@
+/* When daily notes disabled: no pointer cursor or hover background on day
+   cells. The :not(.active) exception preserves the purple resting background
+   on the active-file cell (which can persist after toggling daily off, since
+   the active-file UID isn't recomputed on settings change). */
+.calendar-plus-wrapper:not(.daily-enabled) #calendar-container .day {
+  cursor: default;
+}
+.calendar-plus-wrapper:not(.daily-enabled) #calendar-container .day:not(.active):hover {
+  background-color: var(--color-background-day);
+}
+
+/* When daily notes disabled: also suppress the :active press background +
+   text color so day cells don't flash purple on click-and-hold. The vendored
+   Day.svelte :active rule sets both background-color and color, so we
+   override both. Same .active exception as above. */
+.calendar-plus-wrapper:not(.daily-enabled) #calendar-container .day:not(.active):active {
+  background-color: var(--color-background-day);
+  color: var(--color-text-day);
+}
+
+/* Re-apply .today's purple text color on press for non-active today cells,
+   so the press color override above doesn't flicker today's text to default. */
+.calendar-plus-wrapper:not(.daily-enabled) #calendar-container .day.today:not(.active):active {
+  color: var(--color-text-today);
+}
+
+/* Suppress cursor:pointer from the vendored calendar UI for disabled note types */
+.calendar-plus-wrapper #calendar-container .month,
+.calendar-plus-wrapper #calendar-container .year,
+.calendar-plus-wrapper #calendar-container .quarter {
+  cursor: default;
+}
+
+/* Restore pointer + subtle hover when each note type is enabled */
+.calendar-plus-wrapper.monthly-enabled #calendar-container .month {
+  cursor: pointer;
+}
+.calendar-plus-wrapper.monthly-enabled #calendar-container .month:hover {
+  opacity: 0.7;
+}
+
+.calendar-plus-wrapper.yearly-enabled #calendar-container .year {
+  cursor: pointer;
+}
+.calendar-plus-wrapper.yearly-enabled #calendar-container .year:hover {
+  opacity: 0.7;
+}
+
+.calendar-plus-wrapper.quarterly-enabled #calendar-container .quarter {
+  cursor: pointer;
+}
+.calendar-plus-wrapper.quarterly-enabled #calendar-container .quarter:hover {
+  opacity: 0.7;
+}
+
+/* Current-quarter label is a navigation highlight, not a button. Keep it
+   accent text only — strip any background, gradient, pill, or shadow a
+   theme paints behind the `.active` state. */
+.calendar-plus-wrapper #calendar-container .quarter.active {
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Weekend column shading on header (th) and body (td) cells. Gated by
+   `.weekend-shading-enabled` so the "Shade weekend columns" setting can
+   turn the tint off. Themes that give `.day` its own opaque background
+   may paint over this tint on the body cells — that's intentional, the
+   setting is the user-side workaround for those cases. */
+.calendar-plus-wrapper.weekend-shading-enabled #calendar-container th.weekend,
+.calendar-plus-wrapper.weekend-shading-enabled #calendar-container td.weekend {
+  background-color: var(--color-background-weekend);
+}
+
+/* Second daily note dot rendered at half opacity to visually distinguish
+   it from the primary daily note dot without introducing a new color. */
+.calendar-plus-wrapper #calendar-container .dot.filled.second-daily {
+  opacity: 0.5;
+}

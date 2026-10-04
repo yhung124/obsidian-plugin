@@ -40,10 +40,12 @@ plugins/
 ## Git
 
 - `plugins/` 與 `log.md` 都要進 git，不加 `.gitignore`。
+- `.gitattributes` 將 `plugins/**` 設為 `-text`，git 不轉換行尾，檔案須與 release 位元組一致。不要移除，也不要對 `plugins/` 內檔案做行尾轉換。
+- 工作流程：WSL 執行 `sync.py`，Windows GitHub Desktop commit，最終在 Windows Obsidian 使用。
 - 沒有使用者明確要求，不 commit、不 push。
 
 ## 已知限制
 
 - 不使用 GitHub token，API 限制 60 次/小時（每個 plugin 約 1 次）。
 - release 沒附 `main.js` 或 `manifest.json`（例如只有原始碼）的 plugin 無法下載。
-- 目前只有 `meld-encrypt` 實際連網測試過。
+- 目前只有 `plugins.json` 內的 8 個 plugin 實際連網測試過。

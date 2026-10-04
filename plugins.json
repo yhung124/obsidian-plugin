@@ -2,5 +2,33 @@
   {
     "id": "meld-encrypt",
     "repo": "meld-cp/obsidian-encrypt"
+  },
+  {
+    "id": "table-editor-obsidian",
+    "repo": "tgrosinger/advanced-tables-obsidian"
+  },
+  {
+    "id": "obsidian-checklist-plugin",
+    "repo": "delashum/obsidian-checklist-plugin"
+  },
+  {
+    "id": "find-unlinked-files",
+    "repo": "vinzent03/find-unlinked-files"
+  },
+  {
+    "id": "recent-files-obsidian",
+    "repo": "tgrosinger/recent-files-obsidian"
+  },
+  {
+    "id": "obsidian-tasks-plugin",
+    "repo": "obsidian-tasks-group/obsidian-tasks"
+  },
+  {
+    "id": "calendar-plus",
+    "repo": "mattmaiorana/calendar-plus"
+  },
+  {
+    "id": "calendar-hub",
+    "repo": "hwy1dot0/calendar-hub"
   }
 ]
